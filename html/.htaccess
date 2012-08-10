@@ -1,0 +1,6 @@
+RewriteEngine on
+RewriteBase /
+RewriteRule !\.(js|ico|gif|jpg|png|css|iso)$ index.php
+
+DirectoryIndex index.html index.php
+

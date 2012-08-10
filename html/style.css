@@ -1,0 +1,33 @@
+@CHARSET "UTF-8";
+
+body{
+	width:960px;
+	margin:15px auto;
+}
+
+article#logo_article{
+	float:left;
+	width:30%;
+}
+
+article#login_article{
+	float:right;
+}
+
+section#comment_section{
+	float:left;
+	width:50%;
+	margin-top:50px;
+}
+
+section#entry_section{
+	float:right;
+}
+
+footer#page_footer{
+	clear:both;
+	width:100%;
+	display:block;
+	text-align:center;
+	margin-top:50px;
+}
