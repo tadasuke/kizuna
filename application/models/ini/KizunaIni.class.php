@@ -47,7 +47,7 @@ class KizunaIni {
 			// ログインクッキー保持期間
 			, 'login_cookie_keep_time' => 604800 // 一週間
 			// プロフィール未設定時表示データパス
-			, 'non_profile_img' => '/upsystem/new_kizuna/html/img/no-image-man.jpg'
+			, 'non_profile_img' => '/upsystem/new_kizuna/kizuna/html/img/no-image-man.jpg'
 			// 新規登録時パスワード生成シークレットキー
 			, 'new_entry_secret_key' => 'king_of_tadasuke'
 			// ベースURL
