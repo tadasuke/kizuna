@@ -61,7 +61,7 @@
 								<div class="clearfix fbIndexFeaturedRegistration">
 									<div class="feature lfloat">
 										<div class="plm fbIndexMap">
-											<div class="plm title fsl fwb fcb">KIZUNAを使うと、友達や同僚、同級生、仲間たちとつながりを深められます。スマートフォンからもアクセスできます。</div>
+											<div class="plm title fsl fwb fcb">KIZUNAを使うと、友達や同僚、同級生、仲間たちとつながりを深められる可能性が若干アップします。スマートフォンからもアクセスできます。</div>
 											<div class="mtl map"></div>
 										</div>
 									</div>
