@@ -161,7 +161,12 @@
 
 			// トーク部分
 			kizunowHtml += '<p>';
-			kizunowHtml += talkArray[i]['talk'];
+			talk = talkArray[i]['talk'];
+			//talk = talk.replace(/(http:\/\/[\x21-\x7e]+)/gi, "<a href='$1' target='_blank'>$1</a>");
+			talk = talk.replace(/(http:\/\/[\x21-\x7e][^\x3c]+)/gi, "<a href='$1' target='_blank'>$1</a>");
+			// リンク設定
+			
+			kizunowHtml += talk;
 			kizunowHtml += '</p>';
 			
 			// 自分のトークの場合は削除ボタン表示
