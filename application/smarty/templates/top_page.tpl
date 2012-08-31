@@ -163,7 +163,7 @@
 			kizunowHtml += '<p>';
 			talk = talkArray[i]['talk'];
 			//talk = talk.replace(/(http:\/\/[\x21-\x7e]+)/gi, "<a href='$1' target='_blank'>$1</a>");
-			talk = talk.replace(/(http:\/\/[\x21-\x7e][^\x3c]+)/gi, "<a href='$1' target='_blank'>$1</a>");
+			talk = talk.replace(/((http|https):\/\/[\x21-\x7e][^\x3c]+)/gi, "<a href='$1' target='_blank'>$1</a>");
 			// リンク設定
 			
 			kizunowHtml += talk;
