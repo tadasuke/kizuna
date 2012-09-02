@@ -1,6 +1,6 @@
 <?php
 
-define( 'APP', '/upsystem/new_kizuna/application' );
+define( 'APP', '/upsystem/new_kizuna/kizuna/application' );
 
 // インクルードパス設定
 set_include_path( get_include_path() . PATH_SEPARATOR . APP );

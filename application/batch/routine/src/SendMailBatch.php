@@ -1,6 +1,6 @@
 <?php
 
-require_once '/upsystem/new_kizuna/application/batch/BatchInclude.php';
+require_once '/upsystem/new_kizuna/kizuna/application/batch/BatchInclude.php';
 
 require_once 'models/Mail.class.php';
 
