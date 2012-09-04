@@ -429,6 +429,31 @@ class User{
 	
 	
 	/**
+	 * 全ユーザID取得
+	 * @return array
+	 */
+	public static function getAllUserId() {
+		
+		OutputLog::outLog( OutputLog::INFO, __METHOD__, __LINE__, 'START' );
+		
+		$valueArray = UserBasicData::getAllData();
+		
+		$userIdArray = array();
+		foreach ( $valueArray as $data ) {
+			$userIdArray[] = $data['user_id'];
+		}
+		
+		foreach ( $userIdArray as $userId ) {
+			OutputLog::outLog( OutputLog::DEBUG, __METHOD__, __LINE__, 'userId:' . $userId );
+		}
+		
+		OutputLog::outLog( OutputLog::INFO, __METHOD__, __LINE__, 'END' );
+		return $userIdArray;
+		
+	}
+	
+	
+	/**
 	 * ユーザ基本データ作成
 	 * @param string $mailAddress
 	 * @param string $password

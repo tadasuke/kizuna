@@ -193,4 +193,55 @@ class UserController extends AfterLoginCommonAction{
 		
 	}
 	
+	
+	/**
+	 * ユーザ一覧ページ表示
+	 */
+	public function viewUserListPageAction() {
+		
+		OutputLog::outLog( OutputLog::INFO, __METHOD__, __LINE__, 'START' );
+		
+		OutputLog::outLog( OutputLog::INFO, __METHOD__, __LINE__, 'END' );
+		
+		$this -> _smarty -> display( 'user_list_page.tpl' );
+	}
+	
+	
+	/**
+	 * 全ユーザデータ取得
+	 */
+	public function getAllUserDataAction() {
+		
+		OutputLog::outLog( OutputLog::INFO, __METHOD__, __LINE__, 'START' );
+		
+		// ユーザID一覧を取得
+		$userIdArray = $userDataArray = User::getAllUserId();
+		
+		$userDataArray = array();
+		foreach ( $userIdArray as $userId ) {
+			OutputLog::outLog( OutputLog::DEBUG, __METHOD__, __LINE__, 'userId:' . $userId );
+			
+			$userClass = UserFactory::get( $userId );
+			$userKey         = $userClass -> getUserKey();
+			$userName        = $userClass -> getName();
+			$mailAddress     = $userClass -> getMailAddress();
+			OutputLog::outLog( OutputLog::DEBUG, __METHOD__, __LINE__, 'userKey:'         . $userKey );
+			OutputLog::outLog( OutputLog::DEBUG, __METHOD__, __LINE__, 'userName:'        . $userName );
+			OutputLog::outLog( OutputLog::DEBUG, __METHOD__, __LINE__, 'mailAddress:'     . $mailAddress );
+			
+			$userDataArray[] = array(
+				  'user_key'           => $userKey
+				, 'user_name'          => $userName
+				, 'mail_address'       => $mailAddress
+			);
+			
+		}
+		
+		OutputLog::outLog( OutputLog::INFO, __METHOD__, __LINE__, 'END' );
+		
+		header( 'Content-type: application/json' );
+		echo( json_encode( $userDataArray ) );
+		
+	}
+	
 }
