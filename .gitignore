@@ -8,4 +8,5 @@ extras/documentation
 .buildpath
 .project
 .settings/
+application/smarty/templates_c/*
 
