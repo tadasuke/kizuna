@@ -47,6 +47,7 @@ require_once 'models/History.class.php';
 $front = Zend_Controller_Front::getInstance();
 $front -> throwExceptions( TRUE );
 $front -> setControllerDirectory( APP . '/controllers' );
+$front -> addModuleDirectory( APP . '/modules' );
 
 try{
 	

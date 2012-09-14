@@ -298,17 +298,21 @@
 	//---------
 	// 初期動作
 	//---------
-	// テーマ取得
-	getTheme();
+	$(document).ready(function() {
+		
+		// テーマ取得
+		getTheme();
 
-	// テーマ設定
-	setTheme();
+		// テーマ設定
+		setTheme();
 
-	// トークデータ取得
-	talkArray = getTalk( '' );
+		// トークデータ取得
+		talkArray = getTalk( '' );
 
-	// トークデータ表示
-	setTalk( talkArray );
+		// トークデータ表示
+		setTalk( talkArray );
+
+	});
 
 	//-----------------------
 	// テーマセレクトボックス変更
