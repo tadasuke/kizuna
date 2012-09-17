@@ -298,21 +298,17 @@
 	//---------
 	// 初期動作
 	//---------
-	$(document).ready(function() {
-		
-		// テーマ取得
-		getTheme();
+	// テーマ取得
+	getTheme();
 
-		// テーマ設定
-		setTheme();
+	// テーマ設定
+	setTheme();
 
-		// トークデータ取得
-		talkArray = getTalk( '' );
+	// トークデータ取得
+	talkArray = getTalk( '' );
 
-		// トークデータ表示
-		setTalk( talkArray );
-
-	});
+	// トークデータ表示
+	setTalk( talkArray );
 
 	//-----------------------
 	// テーマセレクトボックス変更
@@ -420,6 +416,8 @@
 	//---------------
 	$(".comment_button").click( function() {
 
+		console.log( 'ほげほげ' );
+		
 		var header = 'comment_button_';
 		var commnetTextareaHeader = 'comment_';
 		var commentViewTableHeader = 'view_comment_table_';
