@@ -416,8 +416,9 @@
 	//---------------
 	$(".comment_button").click( function() {
 
-		console.log( 'ほげほげ' );
-		
+		// コメントボタンを非活性にする
+		$(".comment_button").attr( "disabled", true );
+
 		var header = 'comment_button_';
 		var commnetTextareaHeader = 'comment_';
 		var commentViewTableHeader = 'view_comment_table_';
@@ -428,7 +429,17 @@
 
 		// コメントを抽出
 		var comment = $("#" + commnetTextareaHeader + talkSeqId).val();
-
+		
+		// コメントがない場合は何もしない
+		var commentLength = jQuery.trim( comment ).length;
+		if ( commentLength == 0 ) {
+			// コメントボタンを活性にする
+			$(".comment_button").attr( "disabled", false );
+			return;
+		} else {
+			;
+		}
+		
 		// コメント書き込み
 		writeComment( talkSeqId, comment );
 
