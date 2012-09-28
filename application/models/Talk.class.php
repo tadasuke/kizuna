@@ -243,4 +243,38 @@ class Talk{
 	}
 	
 	
+	/**
+	 * コメントしているユーザID配列を取得
+	 * @param int $talkSeqId
+	 * @return array
+	 */
+	public static function getCommentUserIdArray( $talkSeqId ) {
+		
+		OutputLog::outLog( OutputLog::INFO, __METHOD__, __LINE__, 'START' );
+		OutputLog::outLog( OutputLog::INFO, __METHOD__, __LINE__, 'talkSeqId:' . $talkSeqId );
+		
+		$valueArray = CommentData::getDataByTalkSeqId( $talkSeqId );
+		
+		$userIdArray = array();
+		foreach ( $valueArray as $data ) {
+			
+			$userId = $data['user_id'];
+			$userIdArray[] = $userId;
+			
+		}
+		
+		// 重複を除去
+		$userIdArray = array_unique( $userIdArray );
+		
+		foreach ( $userIdArray as $userId ) {
+			OutputLog::outLog( OutputLog::DEBUG, __METHOD__, __LINE__, 'userId:' . $userId );
+		}
+		
+		OutputLog::outLog( OutputLog::INFO, __METHOD__, __LINE__, 'END' );
+		
+		return $userIdArray;
+		
+	}
+	
+	
 }

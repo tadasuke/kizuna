@@ -314,6 +314,54 @@ class TalkController extends AfterLoginCommonAction{
 			;
 		}
 		
+		//-----------------------------------
+		// 既にコメントしているユーザにメッセージ送信
+		//-----------------------------------
+		$commentUserIdArray = Talk::getCommentUserIdArray( $talkSeqId );
+		
+		foreach ( $commentUserIdArray as $commentUserId ) {
+			
+			OutputLog::outLog( OutputLog::DEBUG, __METHOD__, __LINE__, 'commetnUserId:' . $commetnUserId );
+			
+			// トークユーザの場合はスルー
+			if ( strcmp( $talkUserId, $commentUserId ) == 0 ) {
+				OutputLog::outLog( OutputLog::DEBUG, __METHOD__, __LINE__, 'talk_user!!' );
+				continue;
+			} else {
+				;
+			}
+			
+			// コメントをしたユーザの場合
+			if ( strcmp( $this -> userId, $commentUserId ) == 0 ) {
+				OutputLog::outLog( OutputLog::DEBUG, __METHOD__, __LINE__, 'comment_user!!' );
+				continue;
+			} else {
+				;
+			}
+			
+			//----------
+			// メール送信
+			//----------
+			// 送信先アドレスを取得
+			$sendMailAddress = UserFactory::get( $commentUserId ) -> getMailAddress();
+			OutputLog::outLog( OutputLog::DEBUG, __METHOD__, __LINE__, 'sendMailAddress:' . $sendMailAddress );
+			// トークユーザの名前を取得
+			$talkUserName = UserFactory::get( $talkUserId ) -> getName();
+			OutputLog::outLog( OutputLog::DEBUG, __METHOD__, __LINE__, 'talkUserName:' . $talkUserName );
+			// 新たにコメントしたユーザの名前を取得
+			$newCommentUserName = $this -> userClass -> getName();
+			OutputLog::outLog( OutputLog::DEBUG, __METHOD__, __LINE__, 'newCommentUserName:' . $newCommentUserName );
+				
+			// メール送信
+			$mailTitle = 'KIZUNAからのお知らせ';
+			$mailMessage = '';
+			$mailMessage .= $newCommentUserName . 'さんも' . $talkUserName . 'さんの書き込みにコメントをしました。' . PHP_EOL;
+			$mailMessage .= Config::getConfig( 'system', 'base_url' ) . '/top/index?talk_id=' . $talkSeqId;
+				
+			Mail::sendSimpleMail( $sendMailAddress, $mailTitle, $mailMessage );
+			
+		}
+		
 		OutputLog::outLog( OutputLog::INFO, __METHOD__, __LINE__, 'END' );
 		
 	}
