@@ -21,7 +21,7 @@ class ImgController extends AfterLoginCommonAction{
 		$profileImgData = UserFactory::get( $targetUserId ) -> getProfileImgData();
 		
 		OutputLog::outLog( OutputLog::INFO, __METHOD__, __LINE__, 'END' );
-		header( 'Content-type: image/*' );
+		header( 'Content-type: image/JPEG' );
 		echo( $profileImgData );
 		
 		
@@ -67,7 +67,7 @@ class ImgController extends AfterLoginCommonAction{
 		//$imgData = $this -> userClass -> getImgClass() -> getImgData( $imgSeqId );
 		
 		OutputLog::outLog( OutputLog::INFO, __METHOD__, __LINE__, 'END' );
-		header( 'Content-type: image/*' );
+		header( 'Content-type: image/JPEG' );
 		echo( $imgData );
 		
 	}
