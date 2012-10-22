@@ -310,6 +310,9 @@
 	// トークデータ表示
 	setTalk( talkArray );
 
+	// コメントイベント追加
+	addComment();
+	
 	//-----------------------
 	// テーマセレクトボックス変更
 	//-----------------------
@@ -368,6 +371,9 @@
 
 		talkArray = talkArray.concat( newTalkArray );
 		
+		// コメントイベントを追加
+		addComment();
+		
 	});
 
 
@@ -411,43 +417,44 @@
 	});
 
 
-	//---------------
-	// コメント書き込み
-	//---------------
-	$(".comment_button").click( function() {
-
-		// コメントボタンを非活性にする
-		$(".comment_button").attr( "disabled", true );
-
-		var header = 'comment_button_';
-		var commnetTextareaHeader = 'comment_';
-		var commentViewTableHeader = 'view_comment_table_';
-		var talkSeqId = $(this).attr( "id" );
-
-		// コメント対象のトークシーケンスIDを抽出
-		talkSeqId = talkSeqId.slice( header.length );
-
-		// コメントを抽出
-		var comment = $("#" + commnetTextareaHeader + talkSeqId).val();
-		
-		// コメントがない場合は何もしない
-		var commentLength = jQuery.trim( comment ).length;
-		if ( commentLength == 0 ) {
-			// コメントボタンを活性にする
-			$(".comment_button").attr( "disabled", false );
-			return;
-		} else {
-			;
-		}
-		
-		// コメント書き込み
-		writeComment( talkSeqId, comment );
-
-		// ページをリロード
-		location.reload( true );
-		
-	});
+	//------------------------
+	// コメント書き込みイベント追加
+	//------------------------
+	function addComment() {
+		$(".comment_button").click( function() {
 	
+			// コメントボタンを非活性にする
+			$(".comment_button").attr( "disabled", true );
+	
+			var header = 'comment_button_';
+			var commnetTextareaHeader = 'comment_';
+			var commentViewTableHeader = 'view_comment_table_';
+			var talkSeqId = $(this).attr( "id" );
+	
+			// コメント対象のトークシーケンスIDを抽出
+			talkSeqId = talkSeqId.slice( header.length );
+	
+			// コメントを抽出
+			var comment = $("#" + commnetTextareaHeader + talkSeqId).val();
+			
+			// コメントがない場合は何もしない
+			var commentLength = jQuery.trim( comment ).length;
+			if ( commentLength == 0 ) {
+				// コメントボタンを活性にする
+				$(".comment_button").attr( "disabled", false );
+				return;
+			} else {
+				;
+			}
+			
+			// コメント書き込み
+			writeComment( talkSeqId, comment );
+	
+			// ページをリロード
+			location.reload( true );
+			
+		});
+	}
 	
 	$(function() {
 		//$('#talk_text').autoResize({
