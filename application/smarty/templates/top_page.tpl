@@ -421,6 +421,11 @@
 	// コメント書き込みイベント追加
 	//------------------------
 	function addComment() {
+		
+		// 現在のイベントを削除
+		$(".comment_button").unbind();
+		
+		// 新たにイベントを追加
 		$(".comment_button").click( function() {
 	
 			// コメントボタンを非活性にする
