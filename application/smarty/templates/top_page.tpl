@@ -146,7 +146,7 @@
 			kizunowHtml += '&nbsp;→&nbsp;';
 			kizunowHtml += '<span style="font-weight:bold">' + getThemeNameByTthemeId( talkArray[i]['theme_id'] ) + '</span>';
 			kizunowHtml += '&nbsp;&nbsp;&nbsp;&nbsp;';
-			kizunowHtml += '<span>' + talkArray[i]['talk_date'] + '</span>';
+			kizunowHtml += '<span><a href="/top/index?talk_id=' + talkArray[i]['seq_id'] + '">' + talkArray[i]['talk_date'] + '</a></span>';
 			kizunowHtml += '<br/>';
 
 			// 画像部分
