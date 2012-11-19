@@ -33,7 +33,7 @@ class TalkController extends AfterLoginCommonAction{
 		if ( $size > 0 ) {
 			
 			// タイプ設定
-			$type = (strcmp( $imgDataArray['type'], 'video/x-m4v' ) == 0) ? Img::IMG_TYPE_VIDEO : Img::IMG_TYPE_IMAGE;
+			$type = (strpos( $imgDataArray['type'], 'vide' ) === FALSE ) ? Img::IMG_TYPE_IMAGE : Img::IMG_TYPE_VIDEO;
 			OutputLog::outLog( OutputLog::DEBUG, __METHOD__, __LINE__, 'type:' . $type );
 			
 			// 画像データインサート
