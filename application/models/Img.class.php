@@ -4,6 +4,9 @@ require_once 'models/db/trun/ImgData.class.php';
 
 class Img {
 	
+	const IMG_TYPE_IMAGE = '1';
+	const IMG_TYPE_VIDEO = '2';
+	
 	/**
 	 * @var int $userId
 	 */
@@ -48,7 +51,7 @@ class Img {
 	 * @param string $filePath
 	 * @return int $imgSeqId
 	 */
-	public function insertImgData( $filePath ) {
+	public function insertImgData( $filePath, $type ) {
 		
 		OutputLog::outLog( OutputLog::INFO, __METHOD__, __LINE__, 'START' );
 		OutputLog::outLog( OutputLog::DEBUG, __METHOD__, __LINE__, 'filePath:' . $filePath );
@@ -56,7 +59,7 @@ class Img {
 		//-------------------
 		// 画像データをインサート
 		//-------------------
-		$imgSeqId = ImgData::_insert( $this -> userId, file_get_contents( $filePath ) );
+		$imgSeqId = ImgData::_insert( $this -> userId, file_get_contents( $filePath ), $type );
 		OutputLog::outLog( OutputLog::DEBUG, __METHOD__, __LINE__, 'imgSeqId:' . $imgSeqId );
 		
 		OutputLog::outLog( OutputLog::INFO, __METHOD__, __LINE__, 'END' );
@@ -65,6 +68,7 @@ class Img {
 		
 	}
 	
+	//---------------------------------------------------- static --------------------------------------
 	
 	/**
 	 * 画像データ取得
@@ -88,6 +92,23 @@ class Img {
 		
 		OutputLog::outLog( OutputLog::INFO, __METHOD__, __LINE__, 'END' );
 		return $valueArray[0]['img'];
+		
+	}
+	
+	
+	/**
+	 * タイプ取得
+	 * @param unknown_type $imgSeqId
+	 */
+	public static function getType( $imgSeqId ) {
+		
+		OutputLog::outLog( OutputLog::INFO, __METHOD__, __LINE__, 'START' );
+		OutputLog::outLog( OutputLog::INFO, __METHOD__, __LINE__, 'imgSeqId:' . $imgSeqId );
+		
+		$valueArray = ImgData::getDataBySeqId( $imgSeqId );
+		
+		OutputLog::outLog( OutputLog::INFO, __METHOD__, __LINE__, 'END' );
+		return $valueArray[0]['type'];
 		
 	}
 	

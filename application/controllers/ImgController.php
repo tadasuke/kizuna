@@ -64,10 +64,17 @@ class ImgController extends AfterLoginCommonAction{
 		OutputLog::outLog( OutputLog::DEBUG, __METHOD__, __LINE__, 'imgSeqId:' . $imgSeqId );
 		
 		$imgData = Img::getImgData( $imgSeqId );
-		//$imgData = $this -> userClass -> getImgClass() -> getImgData( $imgSeqId );
+		$type    = Img::getType( $imgSeqId );
 		
 		OutputLog::outLog( OutputLog::INFO, __METHOD__, __LINE__, 'END' );
-		header( 'Content-type: image/JPEG' );
+		
+		// 画像の場合
+		if ( strcmp( $type, Img::IMG_TYPE_IMAGE ) == 0 ) {
+			header( 'Content-type: image/JPEG' );
+		// 動画の場合
+		} else {
+			header( 'Content-type: video/x-m4v' );
+		}
 		echo( $imgData );
 		
 	}

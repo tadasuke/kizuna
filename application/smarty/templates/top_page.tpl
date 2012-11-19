@@ -152,8 +152,15 @@
 			// 画像部分
 			kizunowHtml += '<span>';
 			if ( talkArray[i]['img_seq_id'] != '' ) {
-				kizunowHtml += '<a href="/img/get-img?img_seq_id=' + talkArray[i]['img_seq_id'] + '" target="_blank">';
-				kizunowHtml += '<img src="/img/get-img?img_seq_id=' + talkArray[i]['img_seq_id'] + '" width="200px" /></a>';
+				// 画像の場合
+				if ( talkArray[i]['img_type'] == '1' ) {
+					kizunowHtml += '<a href="/img/get-img?img_seq_id=' + talkArray[i]['img_seq_id'] + '" target="_blank">';
+					kizunowHtml += '<img src="/img/get-img?img_seq_id=' + talkArray[i]['img_seq_id'] + '" width="200px" /></a>';
+				// 動画の場合
+				} else {
+					kizunowHtml += '<video src="/img/get-img?img_seq_id=' + talkArray[i]['img_seq_id'] + '" width="400px" controls>';
+					kizunowHtml += '</video>';
+				}
 			} else {
 				;
 			}

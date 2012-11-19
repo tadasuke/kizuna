@@ -31,8 +31,13 @@ class TalkController extends AfterLoginCommonAction{
 		OutputLog::outLog( OutputLog::DEBUG, __METHOD__, __LINE__, 'size:' . $size );
 		
 		if ( $size > 0 ) {
+			
+			// タイプ設定
+			$type = (strcmp( $imgDataArray['type'], 'video/x-m4v' ) == 0) ? Img::IMG_TYPE_VIDEO : Img::IMG_TYPE_IMAGE;
+			OutputLog::outLog( OutputLog::DEBUG, __METHOD__, __LINE__, 'type:' . $type );
+			
 			// 画像データインサート
-			$imgSeqId = $this -> userClass -> getImgClass() -> insertImgData( $imgDataArray['tmp_name'] );
+			$imgSeqId = $this -> userClass -> getImgClass() -> insertImgData( $imgDataArray['tmp_name'], $type );
 		} else {
 			;
 		}
@@ -230,6 +235,7 @@ class TalkController extends AfterLoginCommonAction{
 				, 'name'       => $name
 				, 'user_key'   => $userKey
 				, 'img_seq_id' => (strlen( $imgSeqId ) == 0 ) ? '' : $imgSeqId
+				, 'img_type'   => Img::getType( $imgSeqId )
 				, 'talk_date'  => $talkDate
 				, 'my_talk_flg' => (strcmp( $userId, $this -> userId) == 0) ? '1' : '0'
 				, 'comment_array' => $commentArray

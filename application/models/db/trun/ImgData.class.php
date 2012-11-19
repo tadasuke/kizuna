@@ -51,6 +51,7 @@ class ImgData extends BaseDb {
 			, 'user_id'
 			, 'img'
 			, 'profile_img_flg'
+			, 'type'
 		);
 		$whereArray = array(
 			'seq_id' => $seqId
@@ -67,20 +68,24 @@ class ImgData extends BaseDb {
 	 * インサート
 	 * @param int $userId
 	 * @param string $imgData
+	 * @param string $type
 	 * @return int $imgSeqId
 	 */
-	public static function _insert( $userId, $imgData ) {
+	public static function _insert( $userId, $imgData, $type ) {
 		
 		OutputLog::outLog( OutputLog::INFO, __METHOD__, __LINE__, 'START' );
-		OutputLog::outLog( OutputLog::DEBUG, __METHOD__, __LINE__, 'userId:' . $userId );
+		OutputLog::outLog( OutputLog::INFO, __METHOD__, __LINE__, 'userId:' . $userId );
+		OutputLog::outLog( OutputLog::INFO, __METHOD__, __LINE__, 'type:'   . $type );
 		
 		$insertColumnArray = array(
 			  'user_id'
 			, 'img'
+			, 'type'
 		);
 		$insertValueArray = array(
 			  $userId
 			, $imgData
+			, $type
 		);
 		
 		$imgSeqId = parent::insert( self::$tableName, $insertColumnArray, $insertValueArray );
