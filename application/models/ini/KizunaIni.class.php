@@ -41,7 +41,7 @@ class KizunaIni {
 		, 'system' => array(
 			  'log_file_dir'        => '/var/log/new_kizuna/debug/'
 			, 'batch_log_file_dir'  => '/var/log/new_kizuna/batch/'
-			, 'out_log_level'       => 7
+			, 'out_log_level'       => 1
 			// ログインクッキーキー名
 			, 'login_cookie_key_name' => 'new_kizuna_key'
 			// ログインクッキー保持期間

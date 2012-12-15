@@ -34,13 +34,13 @@ abstract class BaseDb{
 	 */
 	protected static function select( $tableName ) {
 		
-		OutputLog::outLog( OutputLog::INFO, __METHOD__, __LINE__, 'START' );
-		OutputLog::outLog( OutputLog::DEBUG, __METHOD__, __LINE__, 'table_name:' . $tableName );
+		//OutputLog::outLog( OutputLog::INFO, __METHOD__, __LINE__, 'START' );
+		//OutputLog::outLog( OutputLog::DEBUG, __METHOD__, __LINE__, 'table_name:' . $tableName );
 		
 		$dao = DaoFactory::getDao( $tableName );
 		self::$valueArray = $dao -> select( self::$sqlcmd, self::$bindArray );
 		
-		OutputLog::outLog( OutputLog::INFO, __METHOD__, __LINE__, 'END' );
+		//OutputLog::outLog( OutputLog::INFO, __METHOD__, __LINE__, 'END' );
 	}
 	
 	/**
